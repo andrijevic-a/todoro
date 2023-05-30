@@ -321,6 +321,11 @@ h2 {
   text-align: left;
 }
 
+.calendar-entry-2 span:first-child,
+.calendar-input span:first-child {
+  margin-right: 0.83vw;
+}
+
 #card-calendar .add {
   align-self: center;
 }
@@ -611,6 +616,11 @@ h2 {
   font-size: 1.67vw;
   color: var(--grey-color);
   text-align: left;
+}
+
+.todo-entry span:first-child,
+.todo-entry-2 span:first-child {
+  margin-right: 0.83vw;
 }
 
 #card-todo .add {

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todoro | The All-Around App</title>
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" defer></script>
+    <script src="./todo.js" defer></script>
+    <script src="./finance.js" defer></script>
+    <script src="./adding-calendar22.js" defer></script>
+    <script src="./adding-todo.js" defer></script>
+    <script src="./adding-finance.js" defer></script>
+    <script src="./exchange-rate.js" defer></script>
+
+  </head>
+
+  <body>
+    <header>
+      <button id="menu"></button>
+      <button id="home"></button>
+      <button id="dark-switch"></button>
+    </header>
+    <main>
+      <div id="cards-main">
+        <div class="card-main" id="calendar">
+          <button class="title" id="calendar-btn">Calendar</button>
+          <div class="container calendar-container">
+          </div>
+          <button class="add" id="add-calendar"></button>
+        </div>
+        <div class="card-main" id="to-do">
+          <button class="title" id="todo-btn">To Do</button>
+          <div class="container todo-container">
+          </div>
+          <button class="add" id="add-todo"></button>
+        </div>
+        <div class="card-main" id="finance">
+          <button class="title" id="finance-btn">Finance</button>
+          <div class="container">
+            <div class="finance-group">
+              <img src="./img/income.png" alt="" />
+              <button class="text-button finance-entry income green">Income: 
+              </button><span class="income-value green"></span></div>
+            <div class="finance-group">
+              <img src="./img/expense.png" alt="" />
+              <button class="text-button finance-entry expenses red">Expenses: 
+              </button><span class="expenses-value red"></span></div>
+            <div class="finance-group">
+              <img src="./img/currency-blue.png" alt="" />
+              <button class="text-button finance-entry total">Total: 
+              </button><span class="total-value blue"></span></div>
+            <div class="finance-group">
+              <img src="./img/savings.png" alt="" />
+              <button class="text-button finance-entry savings gold">Savings: 
+              </button><span class="savings-value gold"></span></div>
+            <div class="finance-group">
+              <img src="./img/investments.png" alt="" />
+              <button class="text-button finance-entry investments gold">Investments: 
+              </button><span class="investments-value gold"></span></div>
+          </div>
+          <button class="add" id="add-finance"></button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Calendar -->
+
+    <section id="calendar-section">
+      <div id="card-calendar">
+        <div class="group">
+          <button class="back"><img src="./img/back.png" alt="" /></button>
+          <h2>Calendar</h2>
+          <button class="sort"><img src="./img/sort.png" alt="" /></button>
+        </div>
+        <div class="container calendar-container-card">
+       </div>
+        <button class="add" id="add-calendar"></button>
+      </div>
+    </section>
+
+    <!-- Adding Calendar -->
+
+    <section id="adding-calendar-section">
+      <div class="darken-bg"></div>
+      <div id="adding-calendar">
+        <div id="close">
+          <button id="close-btn"><img src="./img/close.png" alt="" /></button>
+        </div>
+        <form id="calendar-form" action="POST">
+          <div class="form-group">
+            <label for="calendarDate">Date</label>
+            <input name="calendarDate" id="calendarDate" type="date" />
+          </div>
+          <div class="form-group">
+            <label for="calendarTitle">Title</label>
+            <input
+              id="calendarTitle"
+              name="calendarTitle"
+              type="text"
+              placeholder="Input title here"
+            />
+          </div>
+          <div class="form-group">
+            <label id="repeat" for="calendar-repeat">Repeat</label>
+            <select name="calendar-repeat" id="calendar-repeat">
+              <option value="no-repeat">No repeat</option>
+              <option value="daily">Every day</option>
+              <option value="two-day-repeat">Every other day</option>
+              <option value="weakly">Every week</option>
+              <option value="monthly">Every month</option>
+              <option value="yearly">Every year</option>
+            </select>
+          </div>
+          <div class="form-group textarea-group">
+            <label id="description" for="calendar-description">Description</label>
+            <textarea
+              id="calendar-description"
+              name="calendar-description"
+              placeholder="Input description here"
+            ></textarea>
+          </div>
+          <input id="submit-add-calendar" type="submit" value="Add Item" />
+        </form>
+      </div>
+    </section>
+
+    <!-- Edit Calendar -->
+
+    <section id="editing-calendar-section">
+      <div class="darken-bg"></div>
+      <div id="adding-calendar">
+        <div id="close">
+          <button id="close-btn"><img src="./img/close.png" alt="" /></button>
+        </div>
+        <form action="POST">
+          <div class="form-group">
+            <label for="calendar-date">Date:</label>
+            <input id="calendar-date" type="date" />
+          </div>
+          <div class="form-group">
+            <label for="calendar-title">Title:</label>
+            <input id="calendar-title" type="text" placeholder="Input title here" />
+          </div>
+          <div class="form-group">
+            <label for="calendar-repeat">Repeat?</label>
+            <select id="calendar-repeat">
+              <option value="no-repeat">No repeat</option>
+              <option value="daily">Every day</option>
+              <option value="two-day-repeat">Every other day</option>
+              <option value="weakly">Every week</option>
+              <option value="monthly">Every month</option>
+              <option value="yearly">Every year</option>
+            </select>
+          </div>
+          <div class="form-group textarea-group">
+            <label for="calendar-description">Description:</label>
+            <textarea id="calendar-description" placeholder="Input description here"></textarea>
+          </div>
+          <div class="edit-cancel">
+            <input id="submit-edit-calendar" type="submit" value="Edit Item" />
+            <button type="button" class="cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- To-Do -->
+
+    <section id="todo-section">
+      <div id="card-todo">
+        <div class="group">
+          <button class="back"><img src="./img/back.png" alt="" /></button>
+          <h2>To - do</h2>
+          <button class="sort"><img src="./img/sort.png" alt="" /></button>
+        </div>
+        <div class="container todo-container-card">
+        </div>
+        <button class="add" id="add-todo"></button>
+      </div>
+    </section>
+
+    <!-- Adding To-Do -->
+
+    <section id="adding-todo-section">
+      <div class="darken-bg"></div>
+      <div id="adding-todo">
+        <div id="close">
+          <button id="close-btn"><img src="./img/close.png" alt="" /></button>
+        </div>
+        <form action="POST" id="todo-form">
+          <div class="form-group">
+            <label for="toDoDate">Date</label>
+            <input name="toDoDate" id="toDoDate" type="date" />
+          </div>
+          <div class="form-group">
+            <label for="toDoTime">Time</label>
+            <input name="toDoTime" id="toDoTime" type="time" />
+          </div>
+          <div class="form-group">
+            <label for="toDoTitle">Title</label>
+            <input
+              name="toDoTitle"
+              id="toDoTitle"
+              type="text"
+              placeholder="Input title here"
+            />
+          </div>
+          <div class="form-group">
+            <label id="repeat" for="toDoRepeat">Repeat?</label>
+            <select name="toDoRepeat" id="toDoRepeat">
+              <option value="no-repeat">No repeat</option>
+              <option value="hourly">Every hour</option>
+              <option value="two-hour-repeat">Every other hour</option>
+              <option value="daily">Every day</option>
+              <option value="two-day-repeat">Every other day</option>
+              <option value="weakly">Every week</option>
+            </select>
+          </div>
+          <div class="form-group textarea-group">
+            <label id="description" for="toDoDescription">Description</label>
+            <textarea
+              name="toDoDescription"
+              id="toDoDescription"
+              placeholder="Input description here"
+            ></textarea>
+          </div>
+          <input id="submit-add-todo" type="submit" value="Add Item" />
+        </form>
+      </div>
+    </section>
+
+    <!-- Editing To-Do -->
+
+    <section id="editing-todo-section">
+      <div class="darken-bg"></div>
+      <div id="editing-todo">
+        <div id="close">
+          <button id="close-btn"><img src="./img/close.png" alt="" /></button>
+        </div>
+        <form action="POST">
+          <div class="form-group">
+            <label for="todo-date">Date</label>
+            <input id="todo-date" type="date" />
+          </div>
+          <div class="form-group">
+            <label for="todo-time">Time</label>
+            <input id="todo-time" type="time" />
+          </div>
+          <div class="form-group">
+            <label for="todo-title">Title</label>
+            <input
+              id="todo-title"
+              type="text"
+              placeholder="Input title here"
+            />
+          </div>
+          <div class="form-group">
+            <label id="repeat" for="todo-repeat">Repeat?</label>
+            <select id="todo-repeat">
+              <option value="no-repeat">No repeat</option>
+              <option value="hourly">Every hour</option>
+              <option value="two-hour-repeat">Every other hour</option>
+              <option value="daily">Every day</option>
+              <option value="two-day-repeat">Every other day</option>
+              <option value="weakly">Every week</option>
+            </select>
+          </div>
+          <div class="form-group textarea-group">
+            <label id="description" for="todo-description">Description</label>
+            <textarea
+              id="todo-description"
+              placeholder="Input description here"
+            ></textarea>
+          </div>
+          <div class="edit-cancel">
+            <input id="submit-edit-todo" type="submit" value="Edit Item" />
+            <button type="button" class="cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Finance -->
+
+    <section id="finance-section">
+
+      <div id="cards-finance">
+
+        <!-- Income card -->
+
+        <div class="finance-container">
+          <div id="income-card">
+            <div class="group">
+              <img src="./img/income.png" alt="" />
+              <h2>Income</h2>
+              <button class="sort"><img src="./img/sort.png" alt="" /></button>
+            </div>
+            <div class="container">
+              <!-- <div class="content-group">
+                <img
+                  class="checked-income-entry"
+                  src="./img/check-full-green.png"
+                  alt=""
+                />
+                <img
+                  class="unchecked-income-entry"
+                  src="./img/check-green.png"
+                  alt=""
+                />
+                <button class="finance-input income-entry">
+                  <div class="income-item">Salary</div>
+                  <div class="income-item-value">=$900</div>
+                </button>
+                <button class="delete"></button>
+              </div> -->
+            </div>
+            <div id="income-total">
+              <img src="./img/currency-green.png" alt="" />
+              <div class="income-total-text">Total:</div>
+              <div id="income-total-value"></div>
+            </div>
+            <!-- <button class="add" id="add-income"></button> -->
+          </div>
+        </div>
+
+        <!-- Expenses card -->
+
+        <div class="finance-container">
+          <div id="expenses-card">
+            <div class="group">
+              <img src="./img/expense.png" alt="" />
+              <h2>Expenses</h2>
+              <button class="sort"><img src="./img/sort.png" alt="" /></button>
+            </div>
+            <div class="container">
+              <!-- <div class="content-group">
+                <img
+                  class="checked-expenses-entry"
+                  src="./img/check-full-red.png"
+                  alt=""
+                />
+                <img
+                  class="unchecked-expenses-entry"
+                  src="./img/check-red.png"
+                  alt=""
+                />
+                <button class="finance-input expenses-entry">
+                  <div class="expenses-item">Rent</div>
+                  <div class="expenses-item-value">=$50.000</div>
+                </button>
+                <button class="delete"></button>
+              </div> -->
+            </div>
+            <div id="expenses-total">
+              <img src="./img/currency-red.png" alt="" />
+              <div class="expenses-total-text">Total:</div>
+              <div id="expenses-total-value"></div>
+            </div>
+            <!-- <button class="add" id="add-expenses"></button> -->
+          </div>
+        </div>
+
+        <!-- Savings & Investments Card -->
+
+        <div class="finance-container">
+          <div id="sai-card">
+            <div class="group">
+              <img src="./img/sai.png" alt="" />
+              <h2>Savings & Investments</h2>
+              <button class="sort"><img src="./img/sort.png" alt="" /></button>
+            </div>
+            <div class="container">
+              <div class="content-group-2">
+                <img
+                  src="./img/savings.png"
+                  alt=""
+                />
+                <button class="finance-input sai-entry">
+                  <div class="sai-item">Savings</div>
+                  <div class="sai-item-value" id="savings-item-value">0</div>
+                </button>
+              </div>
+              <div class="content-group-2">
+                <img
+                  src="./img/investments.png"
+                  alt=""
+                />
+                <button class="finance-input sai-entry">
+                  <div class="sai-item">Investments</div>
+                  <div class="sai-item-value" id="investments-item-value">0</div>
+                </button>
+              </div>
+            </div>
+            <div id="sai-total">
+              <img src="./img/currency-gold.png" alt="" />
+              <div class="sai-total-text">Total:</div>
+              <div id="sai-total-value">=$0</div>
+            </div>
+            <!-- <button class="add" id="add-sai"></button> -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="finance-btn-group">
+        <button id="finance-wallet-button"><img src="./img/wallet.png" alt=""></button>
+        <button id="finance-total-button">Details</button>
+      </div>
+      
+    </section>
+
+    <!-- Adding Finance Section -->
+
+    <section id="adding-finance-section">
+      <div class="darken-bg"></div>
+      <div id="adding-finance">
+        <div id="close">
+          <button id="close-btn"><img src="./img/close.png" alt="" /></button>
+        </div>
+        <form id="finance-form" action="POST">
+          <div class="form-group">
+            <label for="financeDate">Date</label>
+            <input name="financeDate" id="financeDate" type="date" />
+          </div>
+          <div class="form-group">
+            <label id="type" for="financeType">Type</label>
+            <select name="financeType" id="financeType">
+              <option value="Income">Income</option>
+              <option value="Expenses">Expenses</option>
+              <option value="Savings">Savings</option>
+              <option value="Investments">Investments</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="financeTitle">Item</label>
+            <input
+              name="financeTitle"
+              id="financeTitle"
+              type="text"
+              placeholder="Input item name here"
+            />
+          </div>
+          <div class="form-group">
+            <label id="finance-amount" for="financeAmount">Amount</label>
+            <input
+              name="financeAmount"
+              id="financeAmount"
+              type="number"
+              placeholder="Input amount here"
+            />
+          </div>
+          <div class="form-group">
+            <label id="currency-select" for="financeCurrency">Currency</label>
+            <select name="financeCurrency" id="financeCurrency">
+              <option value="$">USD</option>
+              <option value="€">EUR</option>
+              <option value="RSD">РСД</option>
+            </select>
+          </div>
+          <input id="submit-add-finance" type="submit" value="Add Item" />
+        </form>
+      </div>
+    </section>
+
+    <!-- Editing Finance Section -->
+
+    <section id="editing-finance-section">
+      <div class="darken-bg"></div>
+      <div id="editing-finance">
+        <div id="close">
+          <button id="close-btn"><img src="./img/close.png" alt="" /></button>
+        </div>
+        <form action="POST">
+          <div class="form-group">
+            <label for="finance-date">Date</label>
+            <input id="finance-date" type="date" />
+          </div>
+          <div class="form-group">
+            <label id="type for="finance-type">Type</label>
+            <select id="finance-type">
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+              <option value="savings">Savings</option>
+              <option value="investments">Investments</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="finance-title">Item</label>
+            <input
+              id="finance-title"
+              type="text"
+              placeholder="Input item name here"
+            />
+          </div>
+          <div class="form-group">
+            <label id="finance-amount" for="finance-amount">Amount</label>
+            <input
+              id="finance-amount"
+              type="number"
+              placeholder="Input item name here"
+            />
+          </div>
+          <div class="form-group">
+            <label id="currency-select" for="finance-currency">Currency</label>
+            <select id="finance-currency">
+              <option value="usd">USD</option>
+              <option value="eur">EUR</option>
+              <option value="rsd">РСД</option>
+            </select>
+          </div>
+
+          <div class="edit-cancel">
+            <input id="submit-edit-calendar" type="submit" value="Add Item" />
+            <button type="button" class="cancel">Cancel</button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </body>
+</html>
